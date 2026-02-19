@@ -8,14 +8,13 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BasePage {
-    private WebDriver driver;
+    protected static WebDriver driver;
     private String browser;
     private String baseURL;
 
     public void setDriver(String browser, String baseURL){
         this.browser = browser;
         this.baseURL = baseURL;
-
     }
 
     //Launching Browser
@@ -71,6 +70,11 @@ public class BasePage {
     //currentURL
     public String getCurrentPageURL(){
        return driver.getCurrentUrl();
+    }
+
+    //Click button
+    public void clickButton(String buttonName){
+
     }
 
 
