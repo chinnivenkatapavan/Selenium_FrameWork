@@ -12,10 +12,10 @@ public class BasePage {
     private String browser;
     private String baseURL;
 
-   public BasePage(String browser, String baseURL) {
-
+    public void setDriver(String browser, String baseURL){
         this.browser = browser;
         this.baseURL = baseURL;
+
     }
 
     //Launching Browser
@@ -53,22 +53,27 @@ public class BasePage {
         driver.quit();
     }
 
-    //Header
+    //Common_Header
     public void navigatePage(String page){
        driver.findElement(By.xpath("(//a[@class='menu-link' and text()='"+page+"'])[1]")).click();
-
     }
 
     //Logo
     public boolean logoPresent(){
        return driver.findElement(By.xpath("(//a[@itemprop=\"url\"])[1]")).isDisplayed();
-
-
    }
 
     //verifying title
+    public String getTitle(){
+       return driver.getTitle();
+    }
 
     //currentURL
+    public String getCurrentPageURL(){
+       return driver.getCurrentUrl();
+    }
+
+
 
 
 }
