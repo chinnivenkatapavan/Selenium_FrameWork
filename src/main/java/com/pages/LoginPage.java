@@ -5,18 +5,34 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
 
-    public void loginCredentials(){
-        navigatePage("Account");
+    // Locators
+    private final By userNameLocator = By.id("username");
+    private final By passwordLocator = By.id("password");
+    private final By loginButtonLocator = By.name("login");
+    private final By alertMessageLocator = By.xpath("//ul[@role='alert']");
+    private final By welcomeMessageLocator = By.xpath("(//strong)[1]");
+
+
+    public void loginCredentials(String page){
+        navigatePage(page);
     }
 
     public void signIn(String userName, String password){
-        driver.findElement(By.id("username")).sendKeys(userName);
-        driver.findElement(By.id("password")).sendKeys(password);
-        driver.findElement(By.name("login")).click();
+        driver.findElement(userNameLocator).sendKeys(userName);
+        driver.findElement(passwordLocator).sendKeys(password);
+        driver.findElement(loginButtonLocator).click();
     }
 
     public String isAlertDisplayed(){
-        return driver.findElement(By.xpath("//ul[@role='alert']")).getText();
+        return driver.findElement(alertMessageLocator).getText();
+    }
+
+    public void clearText(){
+        driver.findElement(userNameLocator).clear();
+    }
+
+    public String verifyWelcomeMessage(){
+        return driver.findElement(welcomeMessageLocator).getText();
     }
 
 }

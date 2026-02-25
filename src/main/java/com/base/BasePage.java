@@ -8,9 +8,11 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BasePage {
-    protected static WebDriver driver;
+    protected WebDriver driver;
     private String browser;
     private String baseURL;
+    private final By logoLocator = By.xpath("(//a[@itemprop=\"url\"])[1]");
+
 
     public void setDriver(String browser, String baseURL){
         this.browser = browser;
@@ -59,7 +61,7 @@ public class BasePage {
 
     //Logo
     public boolean logoPresent(){
-       return driver.findElement(By.xpath("(//a[@itemprop=\"url\"])[1]")).isDisplayed();
+       return driver.findElement(logoLocator).isDisplayed();
    }
 
     //verifying title

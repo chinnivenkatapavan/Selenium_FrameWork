@@ -8,22 +8,21 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
 
-    public BasePage basePage;
     public LoginPage loginPage;
 
 
     @BeforeMethod
     public void beforeTest() throws InterruptedException {
-        basePage = new BasePage();
+
         loginPage = new LoginPage();
-        basePage.setDriver("edge","https://askomdch.com/");
-        basePage.launchBrowser();
+        loginPage.setDriver("edge","https://askomdch.com/");
+        loginPage.launchBrowser();
         Thread.sleep(3000);
 
     }
 
    @AfterMethod
     public void closeBrowser(){
-        basePage.driverQuit();
+        loginPage.driverQuit();
     }
 }
